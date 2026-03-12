@@ -1,0 +1,133 @@
+############################
+# OS Files
+############################
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+############################
+# Logs
+############################
+
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+############################
+# Node / Angular
+############################
+
+employee-management-ui/node_modules/
+employee-management-ui/dist/
+employee-management-ui/tmp/
+employee-management-ui/out-tsc/
+employee-management-ui/.angular/cache
+employee-management-ui/.angular
+
+employee-management-ui/coverage/
+.npm
+.eslintcache
+
+############################
+# Angular Environment Files
+############################
+
+employee-management-ui/src/environments/*.local.ts
+
+############################
+# Angular Build Artifacts
+############################
+
+*.tsbuildinfo
+
+############################
+# .NET Build Folders
+############################
+
+bin/
+obj/
+out/
+publish/
+
+############################
+# .NET User Files
+############################
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+############################
+# Visual Studio
+############################
+
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+############################
+# Rider / JetBrains
+############################
+
+.idea/
+*.sln.iml
+
+############################
+# Package Managers
+############################
+
+packages/
+*.nupkg
+
+############################
+# Test Results
+############################
+
+TestResults/
+*.trx
+
+############################
+# EF Core Migration Snapshot
+############################
+
+*Migrations/*.Designer.cs
+*Migrations/*Snapshot.cs
+
+############################
+# Docker
+############################
+
+docker-compose.override.yml
+
+############################
+# Environment Files
+############################
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+############################
+# Secrets
+############################
+
+appsettings.Development.json
+secrets.json
+
+############################
+# Misc
+############################
+
+*.swp
+*.tmp
+*.temp
