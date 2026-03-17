@@ -9,65 +9,65 @@ The Employee Management System is a modern, cloud-ready full-stack application b
 ### High-Level Architecture Diagram
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         CLIENT LAYER                                 │
+┌────────────────────────────────────────────────────────────────────┐
+│                         CLIENT LAYER                               │
 │  ┌──────────────────────────────────────────────────────────────┐  │
-│  │         Angular 19 SPA (Employee Management UI)             │  │
-│  │  - Components, Services, Guards, Interceptors               │  │
-│  │  - Reactive Forms with Validation                           │  │
-│  │  - Angular Material & Bootstrap Styling                     │  │
+│  │         Angular 19 SPA (Employee Management UI)              │  │
+│  │  - Components, Services, Guards, Interceptors                │  │
+│  │  - Reactive Forms with Validation                            │  │
+│  │  - Angular Material & Bootstrap Styling                      │  │
 │  └──────────────────┬───────────────────────────────────────────┘  │
 └─────────────────────┼──────────────────────────────────────────────┘
                       │ HTTP/REST
                       │ JWT Token Management
-┌─────────────────────┼──────────────────────────────────────────────┐
-│                     ▼                                               │
+┌─────────────────────┼─────────────────────────────────────────────┐
+│                     ▼                                             │
 │         ┌─────────────────────────────────────────┐               │
 │         │     API GATEWAY / Load Balancer         │               │
 │         │  (nginx in Docker/K8s environment)      │               │
 │         └──────────────┬──────────────────────────┘               │
-│                        │                                           │
-│        PRESENTATION LAYER (.NET 10 API)                            │
-│        ┌──────────────────────────────────────┐                  │
-│        │    Controllers Layer                 │                  │
-│        │  - AuthController                   │                  │
-│        │  - EmployeeController               │                  │
-│        │  - Routing & HTTP Handling          │                  │
-│        └──────────────┬───────────────────────┘                  │
+│                        │                                          │
+│        PRESENTATION LAYER (.NET 10 API)                           │
+│        ┌──────────────────────────────────────┐                   │
+│        │    Controllers Layer                 │                   │
+│        │  - AuthController                    │                   │
+│        │  - EmployeeController                │                   │
+│        │  - Routing & HTTP Handling           │                   │
+│        └──────────────┬───────────────────────┘                   │
 │                       │                                           │
 │        APPLICATION LAYER                                          │
-│        ┌──────────────────────────────────────┐                  │
-│        │    Services & Business Logic        │                  │
-│        │  - AuthService                      │                  │
-│        │  - EmployeeService                  │                  │
-│        │  - Validation Layer                 │                  │
-│        │  - Mapping (AutoMapper)             │                  │
-│        └──────────────┬───────────────────────┘                  │
+│        ┌──────────────────────────────────────┐                   │
+│        │    Services & Business Logic         │                   │
+│        │  - AuthService                       │                   │
+│        │  - EmployeeService                   │                   │
+│        │  - Validation Layer                  │                   │
+│        │  - Mapping (AutoMapper)              │                   │
+│        └──────────────┬───────────────────────┘                   │
 │                       │                                           │
 │        DOMAIN LAYER                                               │
-│        ┌──────────────────────────────────────┐                  │
-│        │    Domain Entities & Interfaces     │                  │
-│        │  - Employee                         │                  │
-│        │  - User                             │                  │
-│        │  - Repository Contracts             │                  │
-│        └──────────────┬───────────────────────┘                  │
+│        ┌──────────────────────────────────────┐                   │
+│        │    Domain Entities & Interfaces      │                   │
+│        │  - Employee                          │                   │  
+│        │  - User                              │                   │  
+│        │  - Repository Contracts              │                   │
+│        └──────────────┬───────────────────────┘                   │
 │                       │                                           │
 │        INFRASTRUCTURE LAYER                                       │
-│        ┌──────────────────────────────────────┐                  │
-│        │    Data Access & Repositories       │                  │
-│        │  - DbContext (EF Core)              │                  │
-│        │  - Generic Repository               │                  │
-│        │  - Specific Repositories            │                  │
-│        │  - Database Migrations              │                  │
-│        └──────────────┬───────────────────────┘                  │
+│        ┌──────────────────────────────────────┐                   │
+│        │    Data Access & Repositories        │                   │
+│        │  - DbContext (EF Core)               │                   │
+│        │  - Generic Repository                │                   │
+│        │  - Specific Repositories             │                   │
+│        │  - Database Migrations               │                   │
+│        └──────────────┬───────────────────────┘                   │
 │                       │                                           │
 │        PERSISTENCE LAYER                                          │
-│        ┌──────────────────────────────────────┐                  │
-│        │         SQL Server 2022             │                  │
-│        │  - Employee Data                    │                  │
-│        │  - User Credentials                 │                  │
-│        │  - Audit Logs (future)              │                  │
-│        └──────────────────────────────────────┘                  │
+│        ┌──────────────────────────────────────┐                   │
+│        │         SQL Server 2022              │                   │
+│        │  - Employee Data                     │                   │
+│        │  - User Credentials                  │                   │
+│        │  - Audit Logs (future)               │                   │
+│        └──────────────────────────────────────┘                   │
 │                                                                   │
 └───────────────────────────────────────────────────────────────────┘
 ```
