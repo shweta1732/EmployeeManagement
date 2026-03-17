@@ -960,7 +960,7 @@ See [Future Improvements](#future-improvements) for planned security enhancement
 
 1. **Clone Repository:**
    ```bash
-   git clone https://github.com/yourusername/Employee_Management_System.git
+   git clone https://github.com/shweta1732/Employee_Management_System.git
    cd EmployeeManagement
    ```
 
@@ -1104,7 +1104,7 @@ npm run test:e2e
    ```bash
    # On production server
    cd /opt/employee-management
-   git clone https://github.com/yourusername/Employee_Management_System.git
+   git clone https://github.com/shweta1732/Employee_Management_System.git
    cd Employee_Management_System
    ```
 
@@ -1147,7 +1147,7 @@ npm run test:e2e
        spec:
          containers:
          - name: api
-           image: ghcr.io/yourusername/employee-api:latest
+           image: ghcr.io/shweta1732/employee-api:latest
            ports:
            - containerPort: 5000
            env:
@@ -1438,8 +1438,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 For issues, questions, or suggestions:
 
 - 📧 **Email:** support@employeemanagement.dev
-- 💬 **Discussion Forum:** [GitHub Discussions](https://github.com/yourusername/Employee_Management_System/discussions)
-- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/yourusername/Employee_Management_System/issues)
+- 💬 **Discussion Forum:** [GitHub Discussions](https://github.com/shweta1732/Employee_Management_System/discussions)
+- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/shweta1732/Employee_Management_System/issues)
 - 📚 **Documentation:** [ARCHITECTURE.md](ARCHITECTURE.md) and [PLAN.md](PLAN.md)
 
 ---
@@ -1478,14 +1478,14 @@ For issues, questions, or suggestions:
 
 **Last Updated:** March 12, 2026  
 **Maintained by:** Development Team  
-**Repository:** https://github.com/yourusername/Employee_Management_System
+**Repository:** https://github.com/shweta1732/Employee_Management_System
 
 ---
 
 ## Quick Links
 
-- 🏠 [Project Home](https://github.com/yourusername/Employee_Management_System)
+- 🏠 [Project Home](https://github.com/shweta1732/Employee_Management_System)
 - 📖 [Architecture Documentation](ARCHITECTURE.md)
 - 📋 [Implementation Plan](PLAN.md)
-- 🐛 [Report Issues](https://github.com/yourusername/Employee_Management_System/issues)
+- 🐛 [Report Issues](https://github.com/shweta1732/Employee_Management_System/issues)
 - 💡 [Suggest Features](https://github.com/yourusername/Employee_Management_System/discussions)
