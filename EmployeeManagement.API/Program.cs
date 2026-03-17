@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp", builder =>
     {
-        builder.WithOrigins("http://localhost:4200", "http://localhost:3000")
+        builder.WithOrigins("http://localhost:80", "http://localhost", "http://localhost:4200", "http://localhost:3000")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials();
@@ -59,6 +59,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // repository and service DI
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IDepartmentRepository, EmployeeManagement.Infrastructure.Repositories.DepartmentRepository>();
+builder.Services.AddScoped<IDepartmentService, EmployeeManagement.Application.Services.DepartmentService>();
 // user repository for auth
 builder.Services.AddScoped<IUserRepository, EmployeeManagement.Infrastructure.Repositories.UserRepository>();
 // authentication services
@@ -73,7 +75,8 @@ builder.Services.AddValidatorsFromAssemblyContaining< EmployeeManagement.Applica
 var app = builder.Build();
 
 // configure middleware
-if (app.Environment.IsDevelopment())
+// Enable Swagger in Development and Docker environments (but not Production)
+if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docker")
 {
     app.UseSwagger();
     app.UseSwaggerUI();

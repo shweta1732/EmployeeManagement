@@ -10,10 +10,15 @@ namespace EmployeeManagement.API.Mapping
         {
             CreateMap<Employee, Employee>();
 
-            // DTO mappings
+            // Employee DTO mappings
             CreateMap<Employee, EmployeeReadDto>();
             CreateMap<EmployeeCreateDto, Employee>();
             CreateMap<EmployeeUpdateDto, Employee>();
+
+            // Department DTO mappings
+            CreateMap<Department, DepartmentDto>();
+            CreateMap<DepartmentCreateDto, Department>();
+            CreateMap<DepartmentUpdateDto, Department>();
         }
     }
 }

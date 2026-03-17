@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace EmployeeManagement.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;

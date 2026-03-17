@@ -10,5 +10,11 @@ namespace EmployeeManagement.Domain.Entities
         public DateTime HireDate { get; set; }
         public string? JobTitle { get; set; }
         public decimal Salary { get; set; }
+        public int? DepartmentId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
+        // Navigation property
+        public Department? Department { get; set; }
     }
 }

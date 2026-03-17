@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace EmployeeManagement.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/employees")]
     [Authorize]
     public class EmployeeController : ControllerBase
     {

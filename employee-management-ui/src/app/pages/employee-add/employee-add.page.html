@@ -1,26 +1,173 @@
 <div class="container mt-4">
-  <h3>Add Employee</h3>
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="mb-3">
-      <label>First Name</label>
-      <input formControlName="firstName" class="form-control" />
+  <div class="row mb-4">
+    <div class="col">
+      <h2>Add New Employee</h2>
     </div>
-    <div class="mb-3">
-      <label>Last Name</label>
-      <input formControlName="lastName" class="form-control" />
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row">
+          <!-- First Name -->
+          <div class="col-md-6 mb-3">
+            <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="firstName"
+              formControlName="firstName"
+              class="form-control"
+              [class.is-invalid]="form.get('firstName')?.invalid && form.get('firstName')?.touched"
+              placeholder="Enter first name"
+            />
+            <div class="invalid-feedback" *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched">
+              First name is required
+            </div>
+          </div>
+
+          <!-- Last Name -->
+          <div class="col-md-6 mb-3">
+            <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              class="form-control"
+              [class.is-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched"
+              placeholder="Enter last name"
+            />
+            <div class="invalid-feedback" *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">
+              Last name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+              placeholder="example@email.com"
+            />
+            <div class="invalid-feedback" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+              {{ form.get('email')?.errors?.['required'] ? 'Email is required' : 'Invalid email format' }}
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="col-md-6 mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              formControlName="phone"
+              class="form-control"
+              placeholder="Enter phone number"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Job Title -->
+          <div class="col-md-6 mb-3">
+            <label for="jobTitle" class="form-label">Job Title <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="jobTitle"
+              formControlName="jobTitle"
+              class="form-control"
+              [class.is-invalid]="form.get('jobTitle')?.invalid && form.get('jobTitle')?.touched"
+              placeholder="e.g., Senior Engineer"
+            />
+            <div class="invalid-feedback" *ngIf="form.get('jobTitle')?.invalid && form.get('jobTitle')?.touched">
+              Job title is required
+            </div>
+          </div>
+
+          <!-- Hire Date -->
+          <div class="col-md-6 mb-3">
+            <label for="hireDate" class="form-label">Hire Date <span class="text-danger">*</span></label>
+            <input
+              type="date"
+              id="hireDate"
+              formControlName="hireDate"
+              class="form-control"
+              [class.is-invalid]="form.get('hireDate')?.invalid && form.get('hireDate')?.touched"
+            />
+            <div class="invalid-feedback" *ngIf="form.get('hireDate')?.invalid && form.get('hireDate')?.touched">
+              Hire date is required
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Salary -->
+          <div class="col-md-6 mb-3">
+            <label for="salary" class="form-label">Salary <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              id="salary"
+              formControlName="salary"
+              class="form-control"
+              [class.is-invalid]="form.get('salary')?.invalid && form.get('salary')?.touched"
+              placeholder="0"
+              min="0"
+            />
+            <div class="invalid-feedback" *ngIf="form.get('salary')?.invalid && form.get('salary')?.touched">
+              {{ form.get('salary')?.errors?.['required'] ? 'Salary is required' : 'Salary must be greater than 0' }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row mt-4">
+          <div class="col">
+            <button
+              type="submit"
+              class="btn btn-success me-2"
+              [disabled]="form.invalid || isSubmitting"
+            >
+              {{ isSubmitting ? 'Saving...' : 'Save Employee' }}
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="cancel()"
+              [disabled]="isSubmitting"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="mb-3">
-      <label>Email</label>
-      <input formControlName="email" class="form-control" />
-    </div>
-    <div class="mb-3">
-      <label>Job Title</label>
-      <input formControlName="jobTitle" class="form-control" />
-    </div>
-    <div class="mb-3">
-      <label>Salary</label>
-      <input type="number" formControlName="salary" class="form-control" />
-    </div>
-    <button class="btn btn-primary" [disabled]="form.invalid">Save</button>
-  </form>
+  </div>
 </div>
+
+<style>
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-danger {
+    color: #dc3545;
+  }
+
+  .invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+</style>

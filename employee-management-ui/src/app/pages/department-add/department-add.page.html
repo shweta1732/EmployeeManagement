@@ -1,0 +1,81 @@
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col">
+      <h2>Add New Department</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Department Name <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+            [class.is-invalid]="form.get('name')?.invalid && form.get('name')?.touched"
+            placeholder="e.g., Engineering"
+          />
+          <div class="invalid-feedback" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            Department name is required
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            class="form-control"
+            rows="4"
+            placeholder="Enter department description..."
+          ></textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-4">
+          <button
+            type="submit"
+            class="btn btn-success me-2"
+            [disabled]="form.invalid || isSubmitting"
+          >
+            {{ isSubmitting ? 'Saving...' : 'Save Department' }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="cancel()"
+            [disabled]="isSubmitting"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-danger {
+    color: #dc3545;
+  }
+
+  .invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+</style>

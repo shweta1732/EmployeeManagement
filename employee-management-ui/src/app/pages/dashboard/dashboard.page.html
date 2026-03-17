@@ -1,14 +1,81 @@
 <div class="container mt-4">
-  <h3>Dashboard</h3>
-  <div class="row">
-    <div class="col">
-      <div class="card p-3">Total Employees: {{ total }}</div>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Dashboard</h2>
+    <button class="btn btn-success" (click)="addEmployee()">+ Add Employee</button>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="row mb-4">
+    <div class="col-md-4 mb-3">
+      <div class="card p-3 text-center">
+        <h5 class="card-title">Total Employees</h5>
+        <h3 class="text-primary">{{ total }}</h3>
+      </div>
     </div>
-    <div class="col">
-      <div class="card p-3">Active Employees: {{ active }}</div>
+    <div class="col-md-4 mb-3">
+      <div class="card p-3 text-center">
+        <h5 class="card-title">Active Employees</h5>
+        <h3 class="text-success">{{ active }}</h3>
+      </div>
     </div>
-    <div class="col">
-      <div class="card p-3">Departments: {{ departmentCount }}</div>
+    <div class="col-md-4 mb-3">
+      <div class="card p-3 text-center">
+        <h5 class="card-title">Departments</h5>
+        <h3 class="text-info">{{ departmentCount }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Employees Table -->
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Recent Employees</h5>
+      <button class="btn btn-sm btn-primary" (click)="viewAllEmployees()">View All</button>
+    </div>
+    <div class="card-body">
+      <div *ngIf="recentEmployees.length > 0; else noData">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Job Title</th>
+              <th>Salary</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of recentEmployees">
+              <td><strong>{{ emp.firstName }} {{ emp.lastName }}</strong></td>
+              <td>{{ emp.email }}</td>
+              <td>{{ emp.jobTitle }}</td>
+              <td>${{ emp.salary }}</td>
+              <td>
+                <button class="btn btn-sm btn-primary" (click)="editEmployee(emp)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noData>
+        <p class="text-muted mb-0">No employees yet. <a href="#" (click)="addEmployee(); $event.preventDefault()">Add one now</a></p>
+      </ng-template>
     </div>
   </div>
 </div>
+
+<style>
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+  
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+</style>

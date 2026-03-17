@@ -15,16 +15,31 @@ export class EmployeeAddPage {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
+    phone: [''],
     hireDate: ['', Validators.required],
-    jobTitle: [''],
-    salary: [0, Validators.min(0)]
+    jobTitle: ['', Validators.required],
+    salary: [0, [Validators.required, Validators.min(0)]]
   });
+  isSubmitting = false;
 
   constructor(private fb: FormBuilder, private empService: EmployeeService, private router: Router) {}
 
   submit() {
     if (this.form.valid) {
-      this.empService.create(this.form.value as any).subscribe(() => this.router.navigate(['/employees']));
+      this.isSubmitting = true;
+      this.empService.create(this.form.value as any).subscribe(
+        () => {
+          this.router.navigate(['/employees']);
+        },
+        (error) => {
+          this.isSubmitting = false;
+          alert('Error adding employee: ' + (error.error?.message || error.message));
+        }
+      );
     }
+  }
+
+  cancel() {
+    this.router.navigate(['/employees']);
   }
 }
